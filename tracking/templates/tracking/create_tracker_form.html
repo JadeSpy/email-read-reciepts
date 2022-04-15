@@ -1,0 +1,27 @@
+
+<head>
+	<title>Create A Tracker</title>
+</head>
+<body>
+	<h1>Create a tracking email</h1>
+	<form action="{% url 'tracking:create_tracker' %}" method="post"> {% csrf_token %}
+		<fieldset>
+			<label for="recipient_name">Recipient Name:</label><br>
+			<input type="text" name="recipient_name" value="Unknown"><br>
+
+			<label for="recipient_email">Recipient Email:</label><br>
+			<input type="email" name="recipient_email" required><br>
+
+			<label for="email_subject">Subject:</label><br>
+			<input type="text" name="email_subject" value="A Matter of importance" required><br>
+
+			<label for="email_content">Email Body:</label><br>
+			<textarea name="email_content" required>Greetings. I delight in informing you that you've been tracked. Get rekt. Sincerely, bad news.</textarea><br>
+			<input type="submit"><br>
+		</fieldset>
+	</form>
+	{% if error_message %}<p><strong>Invalid Input{{ error_message }}</strong></p>{% endif %}
+
+
+
+</body>
